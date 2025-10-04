@@ -1,0 +1,90 @@
+# Five Fold Group - One-Page Business Plan Generator
+
+## Overview
+This is a simple, user-friendly web-based tool that helps users create a professional one-page business plan. The tool is designed with **3rd-grade readability** questions to make business planning accessible to everyone, regardless of their business experience.
+
+## Features
+
+### Simple Question Format
+- Questions are written in easy-to-understand language
+- No confusing business jargon
+- Focuses on real-world experiences and emotions
+
+### Smart Metrics Generation
+The tool automatically generates relevant Key Metrics based on the revenue model selected:
+- **One-time services**: Tracks customer count, pricing, and satisfaction
+- **Memberships**: Tracks active members, recurring revenue, and retention
+- **Online products/services**: Tracks website visitors, conversion rates, and order values
+
+### Professional Output
+- Clean, print-ready one-page business plan
+- Branded with Five Fold Group colors and style
+- Can be saved as PDF directly from browser
+
+## How to Use
+
+### Step 1: Fill Out the Form
+Answer these simple questions:
+1. **Company name** - What's your business called?
+2. **Product/service** - What are you selling?
+3. **Customer pain** - What problem or emotion does your customer feel before finding you?
+4. **Transformation** - How will they feel different after using your product/service?
+5. **Target audience** - Describe the person (age, gender, income)
+6. **Unique value** - What makes you different from others?
+7. **Revenue model** - Choose one: One-time services, Memberships, or Online products/services
+
+### Step 2: Generate Your Plan
+Click the **"Create My Business Plan! 🚀"** button to generate your one-page canvas.
+
+### Step 3: Save or Print
+- Use the **"Print or Save as PDF"** button to save your business plan
+- Use the **"Edit My Answers"** button to go back and make changes
+
+## Technical Details
+
+### File Type
+Single HTML file - no external dependencies or libraries required
+
+### Browser Compatibility
+Works on all modern browsers:
+- Chrome
+- Firefox
+- Safari
+- Edge
+
+### Storage
+All data is stored locally in the browser session. Nothing is saved to a server or database. When you close the page, your data is gone unless you save the PDF.
+
+## Branding
+Matches Five Fold Group's brand identity:
+- **Background**: Dark blue-gray (#3a4a5c)
+- **Primary color**: Olive green (#9DB347)
+- **Secondary color**: Brown (#5C4A22)
+- **Font**: Georgia serif for elegance
+
+## Sections in the Business Plan
+
+The generated one-page business plan includes:
+
+1. **Company Name** (Header)
+2. **What We Sell** - Product/service description
+3. **Customer Before** - The pain point or emotion
+4. **Customer After** - The transformation
+5. **Who We Help** - Target audience demographics
+6. **What Makes Us Different** - Unique value proposition
+7. **Revenue Model** - How the business makes money
+8. **Key Metrics** - Numbers to track for success
+
+## Contact Information
+For questions or support, contact Five Fold Group:
+- **Address**: 4100 W. Alameda Ave. 3rd Fl, Burbank CA, 91505
+- **Phone**: 818-284-6068
+- **Email**: info@thefivefoldgroup.com
+- **Website**: www.thefivefoldgroup.com
+
+## Tagline
+**"YOUR SUCCESS IS OUR PRIORITY"**
+
+---
+
+© Five Fold Group - All rights reserved

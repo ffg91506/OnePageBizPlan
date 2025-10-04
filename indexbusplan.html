@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One-Page Business Plan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            background: #3a4a5c;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .form-section {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #5C4A22;
+            font-size: 32px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        
+        .question-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        input[type="text"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: 'Arial', sans-serif;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #9DB347;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .checkbox-item label {
+            margin: 0;
+            font-weight: normal;
+            cursor: pointer;
+        }
+        
+        .generate-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #9DB347 0%, #5C4A22 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-top: 20px;
+        }
+        
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(157, 179, 71, 0.4);
+        }
+        
+        .canvas-section {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            display: none;
+        }
+        
+        .canvas-section.show {
+            display: block;
+        }
+        
+        .canvas-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #9DB347;
+        }
+        
+        .company-name {
+            font-size: 36px;
+            color: #5C4A22;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .canvas-title {
+            font-size: 20px;
+            color: #9DB347;
+            font-weight: 600;
+        }
+        
+        .canvas-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .canvas-box {
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px;
+            background: #fafafa;
+        }
+        
+        .canvas-box.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .box-title {
+            font-size: 14px;
+            color: #5C4A22;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+        
+        .box-content {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .metrics-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .metrics-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .metrics-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .metrics-list li:before {
+            content: "→ ";
+            color: #9DB347;
+            font-weight: bold;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+        
+        .btn-print {
+            background: #9DB347;
+            color: white;
+        }
+        
+        .btn-print:hover {
+            background: #8AA23D;
+        }
+        
+        .btn-edit {
+            background: #f0f0f0;
+            color: #333;
+        }
+        
+        .btn-edit:hover {
+            background: #e0e0e0;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .form-section,
+            .action-buttons {
+                display: none !important;
+            }
+            
+            .canvas-section {
+                box-shadow: none;
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .canvas-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-section,
+            .canvas-section {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-section" id="formSection">
+            <h1>✨ Create Your Business Plan</h1>
+            <p class="subtitle">Answer these simple questions to build your one-page plan</p>
+            
+            <div class="question-group">
+                <label>What is your company name?</label>
+                <input type="text" id="companyName" placeholder="My Awesome Company">
+            </div>
+            
+            <div class="question-group">
+                <label>What product or service are you selling?</label>
+                <textarea id="productService" placeholder="Describe what you're selling in simple words..."></textarea>
+            </div>
+            
+            <div class="question-group">
+                <label>What is the main pain or emotion you want your customer to feel before they find you?</label>
+                <textarea id="customerPain" placeholder="Are they frustrated? Stressed? Confused? Tired? Describe how they feel..."></textarea>
+            </div>
+            
+            <div class="question-group">
+                <label>After using your product or service, how will your customer feel different?</label>
+                <textarea id="transformation" placeholder="Will they feel happy? Confident? Relieved? Safe? Describe the change..."></textarea>
+            </div>
+            
+            <div class="question-group">
+                <label>Describe the person you saw experience this pain</label>
+                <input type="text" id="targetAge" placeholder="Age (for example: 25-35)">
+                <select id="targetGender" style="margin-top: 10px;">
+                    <option value="">Choose gender...</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="All genders">All genders</option>
+                </select>
+                <input type="text" id="targetIncome" placeholder="How much money do they make per year? (for example: $50,000)" style="margin-top: 10px;">
+            </div>
+            
+            <div class="question-group">
+                <label>What do you think your service is doing that's different than others?</label>
+                <textarea id="uniqueValue" placeholder="What makes you special? Why should someone choose you?"></textarea>
+            </div>
+            
+            <div class="question-group">
+                <label>How do you want to collect money?</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="oneTime" value="One-time services">
+                        <label for="oneTime">One-time services (customer pays once)</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="membership" value="Memberships">
+                        <label for="membership">Memberships (customer pays every month)</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="online" value="Online products/services">
+                        <label for="online">Online products/services</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="allThree" value="All three">
+                        <label for="allThree">All three (recommended for passivity)</label>
+                    </div>
+                </div>
+            </div>
+            
+            <button onclick="generatePlan()" class="generate-btn">Create My Business Plan! 🚀</button>
+        </div>
+        
+        <div class="canvas-section" id="canvasSection">
+            <div class="canvas-header">
+                <div class="company-name" id="displayCompanyName"></div>
+                <div class="canvas-title">One-Page Business Plan</div>
+            </div>
+            
+            <div class="canvas-grid">
+                <div class="canvas-box full-width">
+                    <div class="box-title">What We Sell</div>
+                    <div class="box-content" id="displayProduct"></div>
+                </div>
+                
+                <div class="canvas-box">
+                    <div class="box-title">Customer Before</div>
+                    <div class="box-content" id="displayPain"></div>
+                </div>
+                
+                <div class="canvas-box">
+                    <div class="box-title">Customer After</div>
+                    <div class="box-content" id="displayTransformation"></div>
+                </div>
+                
+                <div class="canvas-box full-width">
+                    <div class="box-title">Who We Help</div>
+                    <div class="box-content" id="displayTarget"></div>
+                </div>
+                
+                <div class="canvas-box full-width">
+                    <div class="box-title">What Makes Us Different</div>
+                    <div class="box-content" id="displayUnique"></div>
+                </div>
+                
+                <div class="canvas-box">
+                    <div class="box-title">How We Make Money</div>
+                    <div class="box-content" id="displayRevenue"></div>
+                </div>
+                
+                <div class="canvas-box">
+                    <div class="box-title">Numbers To Watch</div>
+                    <div class="box-content">
+                        <ul class="metrics-list" id="displayMetrics"></ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="btn btn-print" onclick="window.print()">Print or Save as PDF 📄</button>
+                <button class="btn btn-edit" onclick="editPlan()">Edit My Answers ✏️</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function getMetrics(revenueModels) {
+            const metricsMap = {
+                'One-time services': [
+                    'Number of customers per month',
+                    'Average price per service',
+                    'Customer satisfaction rating'
+                ],
+                'Memberships': [
+                    'Number of active members',
+                    'Monthly recurring revenue',
+                    'Member retention rate (how many stay)',
+                    'New members per month'
+                ],
+                'Online products/services': [
+                    'Website visitors per month',
+                    'Conversion rate (visitors who buy)',
+                    'Average order value',
+                    'Customer lifetime value'
+                ]
+            };
+            
+            const allMetrics = new Set();
+            revenueModels.forEach(model => {
+                if (metricsMap[model]) {
+                    metricsMap[model].forEach(metric => allMetrics.add(metric));
+                }
+            });
+            
+            allMetrics.add('Total revenue per month');
+            allMetrics.add('Customer acquisition cost');
+            
+            return Array.from(allMetrics);
+        }
+        
+        function generatePlan() {
+            const companyName = document.getElementById('companyName').value.trim();
+            const productService = document.getElementById('productService').value.trim();
+            const customerPain = document.getElementById('customerPain').value.trim();
+            const transformation = document.getElementById('transformation').value.trim();
+            const targetAge = document.getElementById('targetAge').value.trim();
+            const targetGender = document.getElementById('targetGender').value;
+            const targetIncome = document.getElementById('targetIncome').value.trim();
+            const uniqueValue = document.getElementById('uniqueValue').value.trim();
+            
+            if (!companyName || !productService || !customerPain || !transformation || !targetAge || !targetGender || !targetIncome || !uniqueValue) {
+                alert('Please fill out all the questions!');
+                return;
+            }
+            
+            const revenueModels = [];
+            const allThreeChecked = document.getElementById('allThree').checked;
+            
+            if (allThreeChecked) {
+                revenueModels.push('One-time services', 'Memberships', 'Online products/services');
+            } else {
+                if (document.getElementById('oneTime').checked) revenueModels.push('One-time services');
+                if (document.getElementById('membership').checked) revenueModels.push('Memberships');
+                if (document.getElementById('online').checked) revenueModels.push('Online products/services');
+            }
+            
+            if (revenueModels.length === 0) {
+                alert('Please select at least one way to collect money!');
+                return;
+            }
+            
+            document.getElementById('displayCompanyName').textContent = companyName;
+            document.getElementById('displayProduct').textContent = productService;
+            document.getElementById('displayPain').textContent = customerPain;
+            document.getElementById('displayTransformation').textContent = transformation;
+            document.getElementById('displayTarget').textContent = targetGender + ', ' + targetAge + ' years old, earning around ' + targetIncome + ' per year';
+            document.getElementById('displayUnique').textContent = uniqueValue;
+            document.getElementById('displayRevenue').textContent = revenueModels.join(', ');
+            
+            const metrics = getMetrics(revenueModels);
+            const metricsList = document.getElementById('displayMetrics');
+            metricsList.innerHTML = '';
+            metrics.forEach(metric => {
+                const li = document.createElement('li');
+                li.textContent = metric;
+                metricsList.appendChild(li);
+            });
+            
+            document.getElementById('formSection').style.display = 'none';
+            document.getElementById('canvasSection').classList.add('show');
+            window.scrollTo(0, 0);
+        }
+        
+        function editPlan() {
+            document.getElementById('formSection').style.display = 'block';
+            document.getElementById('canvasSection').classList.remove('show');
+            window.scrollTo(0, 0);
+        }
+        
+        document.getElementById('allThree').addEventListener('change', function() {
+            if (this.checked) {
+                document.getElementById('oneTime').checked = false;
+                document.getElementById('membership').checked = false;
+                document.getElementById('online').checked = false;
+            }
+        });
+        
+        ['oneTime', 'membership', 'online'].forEach(id => {
+            document.getElementById(id).addEventListener('change', function() {
+                if (this.checked) {
+                    document.getElementById('allThree').checked = false;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
